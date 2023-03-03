@@ -22,6 +22,7 @@ import {
   requestUsersSchemas,
   updateUsersSchemas,
   allUsersSchemas,
+  usersWithoutPasswordSchemas,
 } from "./users.schemas";
 
 import {
@@ -30,6 +31,8 @@ import {
   updateSchedulesUsersPropertiesSchemas,
   allSchedulesUsersPropertiesSchemas,
 } from "./schedulesUsersProperties.schemas";
+
+import { createLoginSchema } from "./login.schemas";
 
 export {
   addressesSchemas,
@@ -50,4 +53,6 @@ export {
   requestSchedulesUsersPropertiesSchemas,
   updateSchedulesUsersPropertiesSchemas,
   allSchedulesUsersPropertiesSchemas,
+  usersWithoutPasswordSchemas,
+  createLoginSchema,
 };

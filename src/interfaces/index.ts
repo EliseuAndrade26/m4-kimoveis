@@ -32,6 +32,8 @@ import {
   iAllSchedulesUsersProperties,
 } from "./schedulesUsersProperties.interfaces";
 
+import { iLogin } from "./login.interfaces";
+
 export {
   iCreateAddresses,
   iAddresses,
@@ -52,4 +54,5 @@ export {
   iSchedulesUsersProperties,
   iPudateSchedulesUsersProperties,
   iAllSchedulesUsersProperties,
+  iLogin,
 };

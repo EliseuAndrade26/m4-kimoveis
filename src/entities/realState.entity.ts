@@ -8,33 +8,33 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import Addresses from "./addresses.entity";
-import Categories from "./categories.entity";
+import { Address } from "./addresses.entity";
+import { Category } from "./category.entity";
 
 @Entity("real_estate")
-export default class RealEstate {
+export class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
   @Column({ default: false, type: "boolean" })
   sold: boolean;
 
-  @Column({ type: "decimal", precision: 12, scale: 2 })
-  value: number;
+  @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
+  value: number | string;
 
   @Column({ type: "integer" })
   size: number;
 
-  @CreateDateColumn({ type: "timestamp" })
-  createdAt: string | Date;
+  @CreateDateColumn()
+  createdAt: string;
 
-  @UpdateDateColumn({ type: "timestamp" })
-  updatedAt: string | Date;
+  @UpdateDateColumn()
+  updatedAt: string;
 
-  @OneToOne(() => Addresses)
+  @OneToOne(() => Address)
   @JoinColumn()
-  address: Addresses;
+  address: Address;
 
-  @ManyToOne(() => Categories, { nullable: true })
-  categores?: Categories | undefined | null;
+  @ManyToOne(() => Category, { nullable: true })
+  categores?: Category | undefined | null;
 }

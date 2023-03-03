@@ -11,7 +11,7 @@ import {
 } from "typeorm";
 
 @Entity("users")
-export default class Users {
+export class User {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
@@ -21,20 +21,20 @@ export default class Users {
   @Column({ length: 45, unique: true, type: "varchar" })
   email: string;
 
-  @Column({ type: "boolean" })
-  admin: boolean;
+  @Column({ default: false, type: "boolean" })
+  admin?: undefined | boolean;
 
   @Column({ length: 120, type: "varchar" })
   password: string;
 
-  @CreateDateColumn({ type: "timestamp" })
-  createdAt: string | Date;
+  @CreateDateColumn()
+  createdAt: string;
 
-  @UpdateDateColumn({ type: "timestamp" })
-  updatedAt: string | Date;
+  @UpdateDateColumn()
+  updatedAt: string;
 
-  @DeleteDateColumn({ type: "timestamp", nullable: true })
-  deletedAt: string | Date;
+  @DeleteDateColumn({ nullable: true })
+  deletedAt: string | undefined | null;
 
   @BeforeInsert()
   @BeforeUpdate()
