@@ -22,19 +22,19 @@ export class User {
   email: string;
 
   @Column({ default: false, type: "boolean" })
-  admin?: undefined | boolean;
+  admin: undefined | boolean;
 
   @Column({ length: 120, type: "varchar" })
   password: string;
 
   @CreateDateColumn()
-  createdAt: string;
+  createdAt: string | Date;
 
   @UpdateDateColumn()
-  updatedAt: string;
+  updatedAt: string | Date;
 
   @DeleteDateColumn({ nullable: true })
-  deletedAt: string | undefined | null;
+  deletedAt: string | undefined | null | Date;
 
   @BeforeInsert()
   @BeforeUpdate()

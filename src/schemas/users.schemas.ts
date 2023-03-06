@@ -22,6 +22,10 @@ export const usersWithoutPasswordSchemas = usersSchemas.omit({
   password: true,
 });
 
-export const updateUsersSchemas = requestUsersSchemas.partial();
+export const updateUsersSchemas = requestUsersSchemas.omit({ admin: true });
+
+export const updatePartialUsersSchemas = requestUsersSchemas
+  .omit({ admin: true })
+  .partial();
 
 export const allUsersSchemas = usersSchemas.omit({ password: true }).array();

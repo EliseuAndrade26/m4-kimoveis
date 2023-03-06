@@ -1,14 +1,17 @@
 import { ensureDataIsValidMiddlewares } from "./ensureDataIsValid.middlewares";
-import ensureTokenIsValidMiddleware from "./ensureTokenIsValid.middlewares";
+import ensureTokenIsValidMiddlewares from "./ensureTokenIsValid.middlewares";
 import ensureUsersEmailExistsMiddlewares from "./ensureUsersEmailExists. middlewares";
 import ensureUsersExistsMiddlewares from "./ensureUsersExists.middlewares";
-import ensureUsersIsAdminMiddleware from "./ensureUsersIsAdmin.middlewares";
-import ensureUsersNotDeleted from "./ensureUsersNotDeleted.middlewares";
+import ensureUsersIsAdminMiddlewares from "./ensureUsersIsAdmin.middlewares";
+import ensureUsersNotDeletedMiddlewares from "./ensureUsersNotDeleted.middlewares";
+import usersIsAdminMiddlewares from "./usersIsAdmin.middlewares";
+
 export {
   ensureDataIsValidMiddlewares,
-  ensureTokenIsValidMiddleware,
+  ensureTokenIsValidMiddlewares,
   ensureUsersEmailExistsMiddlewares,
   ensureUsersExistsMiddlewares,
-  ensureUsersIsAdminMiddleware,
-  ensureUsersNotDeleted,
+  ensureUsersIsAdminMiddlewares,
+  ensureUsersNotDeletedMiddlewares,
+  usersIsAdminMiddlewares,
 };

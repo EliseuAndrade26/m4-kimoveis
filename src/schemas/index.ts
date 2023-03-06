@@ -23,6 +23,7 @@ import {
   updateUsersSchemas,
   allUsersSchemas,
   usersWithoutPasswordSchemas,
+  updatePartialUsersSchemas,
 } from "./users.schemas";
 
 import {
@@ -55,4 +56,5 @@ export {
   allSchedulesUsersPropertiesSchemas,
   usersWithoutPasswordSchemas,
   createLoginSchema,
+  updatePartialUsersSchemas,
 };

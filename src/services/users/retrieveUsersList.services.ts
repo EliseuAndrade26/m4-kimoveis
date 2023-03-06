@@ -7,7 +7,9 @@ import { allUsersSchemas } from "../../schemas";
 export default async function retrieveUsersListServices(): Promise<iAllUsers> {
   const usersRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const findUsers: Array<User> = await usersRepository.find();
+  const findUsers: Array<User> = await usersRepository.find({
+    withDeleted: true,
+  });
 
   const usersList = allUsersSchemas.parse(findUsers);
 

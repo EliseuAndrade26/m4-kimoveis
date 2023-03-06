@@ -2,14 +2,19 @@ import { Router } from "express";
 import {
   createUsersControllers,
   retrieveUsersListControllers,
+  updateUsersControllers,
 } from "../controllers";
+import { deleteUsersControllers } from "../controllers/users.controllers";
 import {
   ensureDataIsValidMiddlewares,
-  ensureUsersIsAdminMiddleware,
+  ensureUsersIsAdminMiddlewares,
   ensureUsersEmailExistsMiddlewares,
-  ensureTokenIsValidMiddleware,
+  ensureTokenIsValidMiddlewares,
+  usersIsAdminMiddlewares,
+  ensureUsersExistsMiddlewares,
+  ensureUsersNotDeletedMiddlewares,
 } from "../middlewares";
-import { requestUsersSchemas } from "../schemas";
+import { requestUsersSchemas, updatePartialUsersSchemas } from "../schemas";
 
 export const usersRoutes: Router = Router();
 
@@ -20,13 +25,27 @@ usersRoutes.post(
   createUsersControllers
 );
 
-usersRoutes.patch("/:id");
+usersRoutes.patch(
+  "/:id",
+  ensureTokenIsValidMiddlewares,
+  usersIsAdminMiddlewares,
+  ensureUsersExistsMiddlewares,
+  ensureDataIsValidMiddlewares(updatePartialUsersSchemas),
+  updateUsersControllers
+);
 
 usersRoutes.get(
   "",
-  ensureTokenIsValidMiddleware,
-  ensureUsersIsAdminMiddleware,
+  ensureTokenIsValidMiddlewares,
+  ensureUsersIsAdminMiddlewares,
   retrieveUsersListControllers
 );
 
-usersRoutes.delete("/:id");
+usersRoutes.delete(
+  "/:id",
+  ensureTokenIsValidMiddlewares,
+  ensureUsersIsAdminMiddlewares,
+  ensureUsersNotDeletedMiddlewares,
+  ensureUsersExistsMiddlewares,
+  deleteUsersControllers
+);

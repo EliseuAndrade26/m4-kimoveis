@@ -3,7 +3,7 @@ import { AppError } from "../errors";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
-export default function ensureTokenIsValidMiddleware(
+export default function ensureTokenIsValidMiddlewares(
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,7 +11,7 @@ export default function ensureTokenIsValidMiddleware(
   let token = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Token is missing", 401);
+    throw new AppError("Missing bearer token", 401);
   }
 
   token = token.split(" ")[1];

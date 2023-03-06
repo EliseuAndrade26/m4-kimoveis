@@ -4,20 +4,22 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities";
 import { AppError } from "../errors";
 
-export default async function ensureUsersNotDeleted(
+export default async function ensureUsersNotDeletedMiddlewares(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const findUser = await userRepository.findOne({
+  const idUser: number = Number(req.params.id);
+
+  const findUser: User | null = await userRepository.findOne({
     where: {
-      id: req.body.id,
+      id: idUser,
     },
   });
 
-  if (findUser!.deletedAt !== null) {
+  if (!findUser) {
     throw new AppError("User not found", 404);
   }
 

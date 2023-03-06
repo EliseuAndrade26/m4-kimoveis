@@ -23,6 +23,7 @@ import {
   iUsers,
   iUpdateUsers,
   iAllUsers,
+  iUsersWithoutPassword,
 } from "./users.interfaces";
 
 import {
@@ -55,4 +56,5 @@ export {
   iPudateSchedulesUsersProperties,
   iAllSchedulesUsersProperties,
   iLogin,
+  iUsersWithoutPassword,
 };

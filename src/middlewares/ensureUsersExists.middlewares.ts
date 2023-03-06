@@ -4,16 +4,16 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities";
 import { AppError } from "../errors";
 
-export default async function ensureUsersExistsMiddleware(
+export default async function ensureUsersExistsMiddlewares(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const findUser = await userRepository.findOne({
+  const findUser: User | null = await userRepository.findOne({
     where: {
-      id: parseInt(req.params.id),
+      id: Number(req.params.id),
     },
   });
 

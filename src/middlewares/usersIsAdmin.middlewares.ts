@@ -4,7 +4,7 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities";
 import { AppError } from "../errors";
 
-export default async function ensureUsersEmailExistsMiddlewares(
+export default async function usersIsAdminMiddlewares(
   req: Request,
   res: Response,
   next: NextFunction
@@ -13,12 +13,16 @@ export default async function ensureUsersEmailExistsMiddlewares(
 
   const findUser: User | null = await userRepository.findOne({
     where: {
-      email: req.body.email,
+      email: req.user.email,
     },
   });
 
-  if (findUser) {
-    throw new AppError("Email already exists", 409);
+  if (findUser!.admin === true) {
+    return next();
+  }
+
+  if (Number(req.params.id) !== req.user.id) {
+    throw new AppError("Insufficient permission", 401);
   }
 
   return next();
