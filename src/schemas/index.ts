@@ -8,13 +8,16 @@ import {
 import {
   categoriesSchemas,
   requestCategoriesSchemas,
+  allCategoriesSchemas,
 } from "./categories.schemas";
 
 import {
   realEstateSchemas,
   requestRealEstateSchemas,
+  returnRealEstateSchemas,
   updateRealEstateSchemas,
   allRealEstateSchemas,
+  realEstateSchedulesSchemas,
 } from "./realEstate.schemas";
 
 import {
@@ -27,10 +30,11 @@ import {
 } from "./users.schemas";
 
 import {
-  schedulesUsersPropertiesSchemas,
-  requestSchedulesUsersPropertiesSchemas,
-  updateSchedulesUsersPropertiesSchemas,
-  allSchedulesUsersPropertiesSchemas,
+  schedulesSchemas,
+  requestSchedulesSchemas,
+  updateSchedulesSchemas,
+  allSchedulesSchemas,
+  newRequestSchedulesSchemas,
 } from "./schedulesUsersProperties.schemas";
 
 import { createLoginSchema } from "./login.schemas";
@@ -42,19 +46,23 @@ export {
   allAddressesSchemas,
   categoriesSchemas,
   requestCategoriesSchemas,
+  allCategoriesSchemas,
   realEstateSchemas,
   requestRealEstateSchemas,
+  returnRealEstateSchemas,
   updateRealEstateSchemas,
   allRealEstateSchemas,
   usersSchemas,
   requestUsersSchemas,
   updateUsersSchemas,
   allUsersSchemas,
-  schedulesUsersPropertiesSchemas,
-  requestSchedulesUsersPropertiesSchemas,
-  updateSchedulesUsersPropertiesSchemas,
-  allSchedulesUsersPropertiesSchemas,
+  schedulesSchemas,
+  requestSchedulesSchemas,
+  updateSchedulesSchemas,
+  allSchedulesSchemas,
   usersWithoutPasswordSchemas,
   createLoginSchema,
   updatePartialUsersSchemas,
+  newRequestSchedulesSchemas,
+  realEstateSchedulesSchemas,
 };

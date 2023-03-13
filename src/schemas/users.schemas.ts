@@ -4,11 +4,11 @@ export const usersSchemas = z.object({
   id: z.number(),
   name: z.string().max(45),
   email: z.string().email().max(45),
-  admin: z.boolean().optional(),
+  admin: z.boolean().optional().default(false),
   password: z.string().max(120),
-  createdAt: z.date(),
-  updatedAt: z.date(),
-  deletedAt: z.date().nullish(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  deletedAt: z.string().nullish(),
 });
 
 export const requestUsersSchemas = usersSchemas.omit({

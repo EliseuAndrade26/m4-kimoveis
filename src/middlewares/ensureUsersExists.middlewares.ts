@@ -11,10 +11,8 @@ export default async function ensureUsersExistsMiddlewares(
 ): Promise<void> {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const findUser: User | null = await userRepository.findOne({
-    where: {
-      id: Number(req.params.id),
-    },
+  const findUser: User | null = await userRepository.findOneBy({
+    id: Number(req.params.id),
   });
 
   if (!findUser) {

@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { createCategoriesControllers } from "../controllers";
+import {
+  createCategoriesControllers,
+  retrieveCategoryListControllers,
+  retrieveCategoryRealEstateListControllers,
+} from "../controllers";
 import {
   ensureDataIsValidMiddlewares,
   ensureTokenIsValidMiddlewares,
@@ -17,4 +21,9 @@ categoriesRoutes.post(
   createCategoriesControllers
 );
 
-categoriesRoutes.get("/:id/realEstate");
+categoriesRoutes.get("", retrieveCategoryListControllers);
+
+categoriesRoutes.get(
+  "/:id/realEstate",
+  retrieveCategoryRealEstateListControllers
+);

@@ -29,7 +29,7 @@ export async function createLoginService(loginData: iLogin): Promise<string> {
 
   const token: string = jwt.sign(
     {
-      email: user.email,
+      admin: user.admin,
     },
     process.env.SECRET_KEY!,
     {

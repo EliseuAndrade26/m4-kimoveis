@@ -1,20 +1,14 @@
 import { z } from "zod";
 import {
-  allSchedulesUsersPropertiesSchemas,
-  requestSchedulesUsersPropertiesSchemas,
-  schedulesUsersPropertiesSchemas,
-  updateSchedulesUsersPropertiesSchemas,
+  allSchedulesSchemas,
+  newRequestSchedulesSchemas,
+  requestSchedulesSchemas,
+  schedulesSchemas,
+  updateSchedulesSchemas,
 } from "../schemas";
 
-export type iCreateSchedulesUsersProperties = z.infer<
-  typeof requestSchedulesUsersPropertiesSchemas
->;
-export type iSchedulesUsersProperties = z.infer<
-  typeof schedulesUsersPropertiesSchemas
->;
-export type iPudateSchedulesUsersProperties = z.infer<
-  typeof updateSchedulesUsersPropertiesSchemas
->;
-export type iAllSchedulesUsersProperties = z.infer<
-  typeof allSchedulesUsersPropertiesSchemas
->;
+export type iCreateSchedules = z.infer<typeof requestSchedulesSchemas>;
+export type iNewCreateSchedules = z.infer<typeof newRequestSchedulesSchemas>;
+export type iSchedules = z.infer<typeof schedulesSchemas>;
+export type iPudateSchedules = z.infer<typeof updateSchedulesSchemas>;
+export type iAllSchedules = z.infer<typeof allSchedulesSchemas>;

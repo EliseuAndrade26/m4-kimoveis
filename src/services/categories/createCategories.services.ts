@@ -23,5 +23,5 @@ export default async function createCategoriesServices(
 
   await categoryRepository.save(category);
 
-  return categoriesSchemas.parse(Category);
+  return categoriesSchemas.parse(category);
 }

@@ -20,10 +20,9 @@ export default function ensureTokenIsValidMiddlewares(
     if (error) {
       throw new AppError(error.message, 401);
     }
-
     req.user = {
       id: Number(decoded.sub),
-      email: decoded.email,
+      admin: decoded.admin,
     };
 
     return next();

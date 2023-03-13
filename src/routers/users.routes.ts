@@ -27,9 +27,9 @@ usersRoutes.post(
 
 usersRoutes.patch(
   "/:id",
+  ensureUsersExistsMiddlewares,
   ensureTokenIsValidMiddlewares,
   usersIsAdminMiddlewares,
-  ensureUsersExistsMiddlewares,
   ensureDataIsValidMiddlewares(updatePartialUsersSchemas),
   updateUsersControllers
 );
@@ -43,9 +43,9 @@ usersRoutes.get(
 
 usersRoutes.delete(
   "/:id",
+  ensureUsersExistsMiddlewares,
   ensureTokenIsValidMiddlewares,
   ensureUsersIsAdminMiddlewares,
   ensureUsersNotDeletedMiddlewares,
-  ensureUsersExistsMiddlewares,
   deleteUsersControllers
 );

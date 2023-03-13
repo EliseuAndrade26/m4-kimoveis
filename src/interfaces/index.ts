@@ -9,6 +9,7 @@ import {
   iCreateCategories,
   iCategories,
   iAllCategories,
+  iAllRealEstateCategory,
 } from "./categories.interfaces";
 
 import {
@@ -16,6 +17,8 @@ import {
   iRealEstate,
   iUpdateRealEstate,
   iAllRealEstate,
+  iReturnRealEstateSchemas,
+  iCreateRealEstateCategory,
 } from "./realEstate.interfaces";
 
 import {
@@ -27,10 +30,11 @@ import {
 } from "./users.interfaces";
 
 import {
-  iCreateSchedulesUsersProperties,
-  iSchedulesUsersProperties,
-  iPudateSchedulesUsersProperties,
-  iAllSchedulesUsersProperties,
+  iCreateSchedules,
+  iSchedules,
+  iPudateSchedules,
+  iAllSchedules,
+  iNewCreateSchedules,
 } from "./schedulesUsersProperties.interfaces";
 
 import { iLogin } from "./login.interfaces";
@@ -44,17 +48,21 @@ export {
   iCategories,
   iAllCategories,
   iCreateRealEstate,
+  iCreateRealEstateCategory,
   iRealEstate,
   iUpdateRealEstate,
   iAllRealEstate,
+  iReturnRealEstateSchemas,
   iCreateUsers,
   iUsers,
   iUpdateUsers,
   iAllUsers,
-  iCreateSchedulesUsersProperties,
-  iSchedulesUsersProperties,
-  iPudateSchedulesUsersProperties,
-  iAllSchedulesUsersProperties,
+  iCreateSchedules,
+  iSchedules,
+  iPudateSchedules,
+  iAllSchedules,
   iLogin,
   iUsersWithoutPassword,
+  iAllRealEstateCategory,
+  iNewCreateSchedules,
 };

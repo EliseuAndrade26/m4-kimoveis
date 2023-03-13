@@ -1,24 +1,38 @@
 import { z } from "zod";
-import { realEstateSchemas } from "./realEstate.schemas";
-import { usersSchemas } from "./users.schemas";
+import {
+  realEstateSchedulesSchemas,
+  realEstateSchemas,
+  returnRealEstateSchemas,
+} from "./realEstate.schemas";
+import { usersSchemas, usersWithoutPasswordSchemas } from "./users.schemas";
 
-export const schedulesUsersPropertiesSchemas = z.object({
+export const schedulesSchemas = z.object({
   id: z.number(),
-  date: z.date(),
+  date: z.string(),
   hour: z.string(),
   realEstate: realEstateSchemas,
   user: usersSchemas,
 });
 
-export const requestSchedulesUsersPropertiesSchemas =
-  schedulesUsersPropertiesSchemas.omit({
+export const requestSchedulesSchemas = schedulesSchemas
+  .omit({
     id: true,
-    realEstate: true,
     user: true,
+  })
+  .extend({
+    realEstate: z.number(),
   });
 
-export const updateSchedulesUsersPropertiesSchemas =
-  requestSchedulesUsersPropertiesSchemas.partial();
+export const newRequestSchedulesSchemas = requestSchedulesSchemas.extend({
+  realEstate: realEstateSchemas,
+  user: usersSchemas,
+});
 
-export const allSchedulesUsersPropertiesSchemas =
-  schedulesUsersPropertiesSchemas.array();
+export const updateSchedulesSchemas = requestSchedulesSchemas.partial();
+
+export const allSchedulesSchemas = schedulesSchemas
+  .extend({
+    realEstate: realEstateSchedulesSchemas,
+    user: usersWithoutPasswordSchemas,
+  })
+  .array();

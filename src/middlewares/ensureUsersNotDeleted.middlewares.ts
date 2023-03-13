@@ -13,10 +13,8 @@ export default async function ensureUsersNotDeletedMiddlewares(
 
   const idUser: number = Number(req.params.id);
 
-  const findUser: User | null = await userRepository.findOne({
-    where: {
-      id: idUser,
-    },
+  const findUser: User | null = await userRepository.findOneBy({
+    id: idUser,
   });
 
   if (!findUser) {

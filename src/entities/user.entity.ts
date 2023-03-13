@@ -8,7 +8,9 @@ import {
   DeleteDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from "typeorm";
+import { Schedule } from "./schedule.entity";
 
 @Entity("users")
 export class User {
@@ -22,19 +24,22 @@ export class User {
   email: string;
 
   @Column({ default: false, type: "boolean" })
-  admin: undefined | boolean;
+  admin: boolean;
 
   @Column({ length: 120, type: "varchar" })
   password: string;
 
-  @CreateDateColumn()
-  createdAt: string | Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-  @UpdateDateColumn()
-  updatedAt: string | Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 
-  @DeleteDateColumn({ nullable: true })
-  deletedAt: string | undefined | null | Date;
+  @DeleteDateColumn({ type: "date", nullable: true })
+  deletedAt: string | undefined | null;
+
+  @OneToMany(() => Schedule, (schedule) => schedule.user)
+  schedule: Array<Schedule>;
 
   @BeforeInsert()
   @BeforeUpdate()
